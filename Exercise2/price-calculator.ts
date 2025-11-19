@@ -3,20 +3,38 @@ import { Premium } from "./customer-types/premium";
 import { Corporate } from "./customer-types/corporate";
 import { Student } from "./customer-types/student";
 import { Weekend } from "./customer-types/weekend";
+import { CustomerTypeEnum,StrategyTypeEnum } from "./enum";
 
 class PriceCalculator {
+    startegy: StrategyTypeEnum;
+    regular: Regular;
+    premium: Premium;
+    corporate: Corporate;
+    student: Student;
+    weekend: Weekend;
+    constructor(strategy: StrategyTypeEnum = StrategyTypeEnum.Strategy_A) {
+        this.startegy = strategy;
+        this.regular = new Regular(this.startegy);
+        this.premium =  new Premium(this.startegy);
+        this.corporate = new Corporate(this.startegy);
+        this.student = new Student(this.startegy);
+        this.weekend = new Weekend(this.startegy);
+    }
+    setStrategy(strategy: StrategyTypeEnum) {
+        this.startegy = strategy;
+    }
     calculate(basePrice: number, days: number, customerType: string): number {
         let total = basePrice * days;
-        if (customerType === "regular") {
-            return new Regular(total).getPrice();
-        } else if (customerType === "premium") {
-            return new Premium(total).getPrice();
-        } else if (customerType === "corporate") {
-            return new Corporate(total).getPrice();
-        } else if (customerType === "student") {
-            return new Student(total).getPrice();
-        }else if (customerType === "weekend") {
-            return new Weekend(total).getPrice();
+        if (customerType === CustomerTypeEnum.Regular) {
+            return total * (1-this.regular.getDiscountRate());
+        } else if (customerType === CustomerTypeEnum.Premium) {
+            return total *(1-this.premium.getDiscountRate());
+        } else if (customerType === CustomerTypeEnum.Corporate) {
+            return total-(1-this.corporate.getDiscountRate());
+        } else if (customerType === CustomerTypeEnum.Student) {
+            return total*(1-this.student.getDiscountRate());
+        }else if (customerType === CustomerTypeEnum.Weekend) {
+            return total*(1-this.weekend.getDiscountRate());
         }
         return total;
     }
