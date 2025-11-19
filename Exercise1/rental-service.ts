@@ -1,17 +1,27 @@
+import { Car } from "./Vehicles/car";
+import { Truck } from "./Vehicles/truck";
+import { SUV } from "./Vehicles/suv";
+import { Motorcycle } from "./Vehicles/motorcycle";
+import { Van } from "./Vehicles/van";
+import { LuxuryCar } from "./Vehicles/luxury-car";
+import { ElectricCar } from "./Vehicles/electric-car";
+
 class RentalService {
     rentVehicle(type: string, days: number): number {
-        if (type === "car") {
-            const rate = 50;
-            return rate * days;
+        if (type === "car") {;
+            return new Car().getRentalCost(days);
         } else if (type === "truck") {
-            const rate = 80;
-            return rate * days;
+            return new Truck().getRentalCost(days);
         } else if (type === "suv") {
-            const rate = 65;
-            return rate * days;
+            return new SUV().getRentalCost(days);
         } else if (type === "motorcycle") {
-            const rate = 30;
-            return rate * days;
+            return new Motorcycle().getRentalCost(days);
+        }else if (type === "van") {
+            return new Van().getRentalCost(days);
+        }else if (type === "luxury car") {
+            return new LuxuryCar().getRentalCost(days);
+        }else if (type === "electric car") {
+            return new ElectricCar().getRentalCost(days);
         }
         return 0;
     }
