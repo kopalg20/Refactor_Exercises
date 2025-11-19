@@ -5,7 +5,7 @@ export class Truck extends Vehicle{
     private payloadCapacity: number;
     private hasFourWheelDrive: boolean;
     constructor(payloadCapacity?: number,hasFourWheelDrive?: boolean){
-        super(RENTAL_RATE_TRUCK,INSURANCE_RATE_TRUCK,"truck");
+        super(RENTAL_RATE_TRUCK,INSURANCE_RATE_TRUCK);
         this.payloadCapacity = payloadCapacity ?? 3000;
         this.hasFourWheelDrive = hasFourWheelDrive ?? true;
     }

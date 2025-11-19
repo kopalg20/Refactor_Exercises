@@ -5,6 +5,7 @@ import { Motorcycle } from "./Vehicles/motorcycle";
 import { Van } from "./Vehicles/van";
 import { LuxuryCar } from "./Vehicles/luxury-car";
 import { ElectricCar } from "./Vehicles/electric-car";
+import { VehicleTypeEnum } from "./enum";
 
 class RentalService {
     car : Car;
@@ -24,19 +25,19 @@ class RentalService {
         this.electricCar = new ElectricCar();
     }       
     rentVehicle(type: string, days: number): number {
-        if (type === "car") {;
+        if (type === VehicleTypeEnum.CAR) {;
             return this.car.getRentalCost(days);
-        } else if (type === "truck") {
+        } else if (type === VehicleTypeEnum.TRUCK) {
             return this.truck.getRentalCost(days);
-        } else if (type === "suv") {
+        } else if (type === VehicleTypeEnum.SUV) {
             return this.suv.getRentalCost(days);
-        } else if (type === "motorcycle") {
+        } else if (type === VehicleTypeEnum.MOTORCYCLE) {
             return this.motorcycle.getRentalCost(days);
-        }else if (type === "van") {
+        }else if (type === VehicleTypeEnum.VAN) {
             return this.van.getRentalCost(days);
-        }else if (type === "luxury car") {
+        }else if (type === VehicleTypeEnum.LUXURY_CAR) {
             return this.luxuryCar.getRentalCost(days);
-        }else if (type === "electric car") {
+        }else if (type === VehicleTypeEnum.ELECTRIC_CAR) {
             return this.electricCar.getRentalCost(days);
         }
         return 0;

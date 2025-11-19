@@ -5,7 +5,7 @@ export class Car extends Vehicle{
     private trunkSpace: number;
     private seatingCapacity: number;
     constructor(trunkSpace?: number,seatingCapacity?: number){
-        super(RENTAL_RATE_CAR,INSURANCE_RATE_CAR,"car");
+        super(RENTAL_RATE_CAR,INSURANCE_RATE_CAR);
         this.trunkSpace = trunkSpace ?? 400;
         this.seatingCapacity = seatingCapacity ?? 5;
     }

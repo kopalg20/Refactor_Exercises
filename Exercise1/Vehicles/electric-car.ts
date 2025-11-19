@@ -5,7 +5,7 @@ export class ElectricCar extends Vehicle{
     private batteryRange: number;
     private chargingTime: number;
     constructor(batteryRange?: number, chargingTime?: number){
-        super(RENTAL_RATE_ELECTRIC_CAR,INSURANCE_RATE_ELECTRIC_CAR,"electric car");
+        super(RENTAL_RATE_ELECTRIC_CAR,INSURANCE_RATE_ELECTRIC_CAR);
         this.batteryRange = batteryRange ?? 350;
         this.chargingTime = chargingTime ?? 1;
     }
