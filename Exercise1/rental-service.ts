@@ -7,21 +7,37 @@ import { LuxuryCar } from "./Vehicles/luxury-car";
 import { ElectricCar } from "./Vehicles/electric-car";
 
 class RentalService {
+    car : Car;
+    truck : Truck;
+    suv : SUV;
+    motorcycle : Motorcycle;
+    van : Van;
+    luxuryCar : LuxuryCar;
+    electricCar : ElectricCar;
+    constructor(){
+        this.car = new Car();
+        this.truck = new Truck();
+        this.suv = new SUV();
+        this.motorcycle = new Motorcycle();
+        this.van = new Van();
+        this.luxuryCar = new LuxuryCar();
+        this.electricCar = new ElectricCar();
+    }       
     rentVehicle(type: string, days: number): number {
         if (type === "car") {;
-            return new Car().getRentalCost(days);
+            return this.car.getRentalCost(days);
         } else if (type === "truck") {
-            return new Truck().getRentalCost(days);
+            return this.truck.getRentalCost(days);
         } else if (type === "suv") {
-            return new SUV().getRentalCost(days);
+            return this.suv.getRentalCost(days);
         } else if (type === "motorcycle") {
-            return new Motorcycle().getRentalCost(days);
+            return this.motorcycle.getRentalCost(days);
         }else if (type === "van") {
-            return new Van().getRentalCost(days);
+            return this.van.getRentalCost(days);
         }else if (type === "luxury car") {
-            return new LuxuryCar().getRentalCost(days);
+            return this.luxuryCar.getRentalCost(days);
         }else if (type === "electric car") {
-            return new ElectricCar().getRentalCost(days);
+            return this.electricCar.getRentalCost(days);
         }
         return 0;
     }
