@@ -22,6 +22,11 @@ class PriceCalculator {
     }
     setStrategy(strategy: StrategyTypeEnum) {
         this.startegy = strategy;
+        this.regular = new Regular(this.startegy);
+        this.premium = new Premium(this.startegy);
+        this.corporate = new Corporate(this.startegy);
+        this.student = new Student(this.startegy);
+        this.weekend = new Weekend(this.startegy);
     }
     calculate(basePrice: number, days: number, customerType: string): number {
         let total = basePrice * days;
@@ -41,3 +46,5 @@ class PriceCalculator {
 }
 const calculator = new PriceCalculator();
 console.log(calculator.calculate(50, 5, "premium")); // 225
+calculator.setStrategy(StrategyTypeEnum.Strategy_C);
+console.log(calculator.calculate(50, 5, "premium")); // 200

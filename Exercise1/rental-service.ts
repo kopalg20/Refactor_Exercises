@@ -25,7 +25,8 @@ class RentalService {
         this.electricCar = new ElectricCar();
     }       
     rentVehicle(type: string, days: number): number {
-        if (type === VehicleTypeEnum.CAR) {;
+        if (type === VehicleTypeEnum.CAR) {
+            // console.log(this.car.getFormatRentalDetails(days));
             return this.car.getRentalCost(days);
         } else if (type === VehicleTypeEnum.TRUCK) {
             return this.truck.getRentalCost(days);
