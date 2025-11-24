@@ -1,8 +1,11 @@
 import { VehicleFactory } from "./vehicle-factory";
 import { Vehicle } from "./vehicle";
 
-class RentalService {       
+export class RentalService {       
     rentVehicle(type: string, days: number): number {
+        if (days < 0) {
+            throw new Error("Days cannot be negative");
+        }
         const factory = new VehicleFactory();
         const vehicle: Vehicle = factory.create(type);
         const rentalCost = vehicle.getRentalCost(days);
