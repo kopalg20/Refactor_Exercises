@@ -1,7 +1,7 @@
 import { StrategyTypeEnum } from "./enum";
 import { CustomerFactory } from "./customer-factory";
 
-class PriceCalculator {
+export class PriceCalculator {
     startegy: StrategyTypeEnum;
     constructor(strategy: StrategyTypeEnum = StrategyTypeEnum.Strategy_A) {
         this.startegy = strategy;
